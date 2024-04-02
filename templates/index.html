@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      html {
+        background-color: gray;
+      }
+
+      .user {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .guest-login {
+        margin-right: 10px;
+      }
+
+      button {
+        border: none;
+        border-radius: 5px;
+      }
+
+      .guest-login button:hover {
+        cursor: pointer;
+      }
+
+      .guest-login button {
+        background-color: lightblue;
+      }
+
+      .admin-login {
+        margin-left: 10px;
+      }
+
+      .admin-login button {
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="user">
+      <h3>Hello {{ user }}</h3>
+      {% if flag %}
+      <p>{{ flag }}</p>
+      {% endif %}
+    </div>
+
+    <div class="login">
+      <div class="guest-login">
+        <button onclick="guestLogin()">Login as Guest</button>
+      </div>
+      <div class="admin-login">
+        <button disabled>Login as Admin</button>
+      </div>
+    </div>
+    <script>
+      function guestLogin() {
+        guestToken = "{{ guest_token }}";
+        window.location.href = "/?token=" + guestToken;
+      }
+    </script>
+  </body>
+</html>
